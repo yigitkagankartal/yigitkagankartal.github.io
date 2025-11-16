@@ -1,0 +1,584 @@
+/* ------------- GLOBAL ------------- */
+
+:root {
+    --bg: #050816;
+    --bg-soft: #0b1120;
+    --accent: #38bdf8;
+    --accent-soft: rgba(56, 189, 248, 0.15);
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --card-bg: rgba(15, 23, 42, 0.9);
+    --border: rgba(148, 163, 184, 0.25);
+    --radius-xl: 18px;
+    --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #020617;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 18px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ------------- BASE (MOBİL / TABLET – TEK KOLON) ------------- */
+
+.page-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;  /* tek kolon */
+    gap: 16px;               /* üst blok ile içerik arası */
+    position: relative;
+    z-index: 1;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-bottom {
+    margin-top: 8px;         /* ikonlar yazıya yakın */
+    padding-bottom: 0;
+}
+
+.sidebar-name {
+    font-size: 2.3rem;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.sidebar-role {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+
+.sidebar-summary {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+/* NAV */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    padding-left: 4px;
+}
+
+.nav-link {
+    position: relative;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 0 4px 40px;
+    opacity: 0.55;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 16px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.45);
+    opacity: 0.55;
+    transition:
+        width 0.35s ease,
+        background 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+    opacity: 0.9;
+    transform: translateX(2px);
+}
+
+.nav-link.active {
+    color: var(--text);
+    opacity: 1;
+    transform: translateX(4px);
+    font-weight: 600;
+}
+
+.nav-link.active::before {
+    width: 32px;
+    background: var(--accent);
+    opacity: 1;
+}
+
+@keyframes navGlowSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+}
+
+.nav-link.just-activated {
+    animation: navGlowSlide 0.35s ease-out;
+}
+
+/* SOSYAL İKONLAR – mobilde hemen başlığın altında */
+
+.sidebar-social {
+    display: flex;
+    justify-content: flex-start;
+    gap: 18px;
+    margin: 8px 0 0 0;
+}
+
+.sidebar-social a {
+    font-size: 1.5rem;
+    color: rgba(148, 163, 184, 0.85);
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.sidebar-social a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.main-content {
+    max-width: 900px;
+    padding: 16px 0 40px;          /* üst boşluk küçük */
+}
+
+/* Section layout */
+
+.section {
+    margin-bottom: 64px;
+    scroll-margin-top: 80px;    
+}
+
+.section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.section-title span {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.section-body {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 640px;
+}
+
+.section-body p + p {
+    margin-top: 10px;
+}
+
+.section-intro {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin-bottom: 18px;
+}
+
+/* ABOUT extra */
+
+.about-edu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.about-edu h3 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.about-edu ul {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.about-edu li + li {
+    margin-top: 6px;
+}
+
+.about-edu span {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+/* TIMELINE */
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-item {
+    padding-left: 16px;
+    border-left: 2px solid rgba(148, 163, 184, 0.4);
+}
+
+.timeline-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.timeline-header h3 {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.timeline-list {
+    list-style: disc;
+    margin-left: 16px;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* PROJECTS GRID */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1x solid var(--border);
+    padding: 16px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.project-meta {
+    margin-bottom: 8px;
+}
+
+.project-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.project-title {
+    font-size: 1rem;
+}
+
+.project-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.project-tech {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.project-tech li {
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.project-points {
+    list-style: disc;
+    margin-left: 16px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.project-links {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.project-links a {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.project-links a:hover {
+    color: #5cdcff;
+}
+
+/* ------------- BUTTON PRESS / CLICK ANIM ------------- */
+
+.is-pressed {
+    transform: translateY(2px) scale(0.94);
+    box-shadow: none !important;
+    filter: brightness(1.05);
+}
+
+/* ------------- DESKTOP (İKİ KOLON, STICKY) ------------- */
+
+@media (min-width: 1030px) {
+
+    body {
+        padding: 32px 18px;
+    }
+
+    .page-wrapper {
+        max-width: 1200px;
+        flex-direction: row;   /* iki kolon */
+        gap: 200px;
+    }
+
+    .sidebar {
+        flex: 0 0 32%;
+        position: sticky;
+        top: 70px;
+        align-self: flex-start;
+        min-height: calc(100vh - 120px);
+    }
+
+    .sidebar-bottom {
+        margin-top: auto;     /* ikonları alta it */
+        padding-bottom: 40px;
+    }
+
+    .main-content {
+        flex: 1;
+        max-width: 720px;
+        padding: 42px 0 72px;
+    }
+
+    .section {
+        margin-bottom: 120px;
+        scroll-margin-top: 120px;
+    }
+
+    .about-edu {
+        gap: 88px;
+    }
+}
+
+/* ------------- CURSOR SPOTLIGHT ------------- */
+
+.cursor-light {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    --mouse-x: 50vw;
+    --mouse-y: 50vh;
+}
+
+.cursor-light::before {
+    content: "";
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(56, 191, 248, 0.349) 0,
+            transparent 70%);
+    mix-blend-mode: screen;
+    filter: blur(10px);
+    opacity: 0.3;
+    transform: translate(calc(var(--mouse-x) - 50%),
+            calc(var(--mouse-y) - 50%));
+}
+
+/* ---------- Astronaut Floating Button ---------- */
+.astro-btn {
+    position: fixed;
+    bottom: 42px;
+    right: 42px;
+    width: 84px;
+    height: 84px;
+    cursor: pointer;
+    z-index: 999;
+    border-radius: 50%;
+    overflow: hidden;        
+    background: rgba(56, 189, 248, 0.08);
+    backdrop-filter: blur(4px);    /* Hafif cam etkisi */
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.28),
+                0 0 40px rgba(0, 242, 255, 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.astro-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;             /* GIF’i kusursuz daireye oturtur */
+    border-radius: 50%;            /* Yumuşak köşe %100 */
+}
+
+
+.astro-btn:hover {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+}
+
+/* ---------- Portal Overlay ---------- */
+.portal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.portal-overlay.active {
+    display: flex;
+}
+
+.portal-content {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 18px;
+    padding: 32px 42px;
+    text-align: center;
+    width: 360px;
+    box-shadow: 0 0 50px rgba(0, 180, 255, 0.4);
+}
+
+.portal-content h2 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.portal-content p {
+    color: #9ca3af;
+    margin-bottom: 24px;
+}
+
+.portal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portal-go {
+    padding: 10px 16px;
+    background: #38bdf8;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.portal-go:hover {
+    background: #5cdcff;
+}
+
+.portal-close {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid #9ca3af;
+    color: #9ca3af;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.portal-close:hover {
+    border-color: white;
+    color: white;
+}
+
