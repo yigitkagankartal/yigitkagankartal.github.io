@@ -41,8 +41,10 @@ body {
     max-width: 900px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;  /* tek kolon */
-    gap: 16px;               /* üst blok ile içerik arası */
+    flex-direction: column;
+    /* tek kolon */
+    gap: 16px;
+    /* üst blok ile içerik arası */
     position: relative;
     z-index: 1;
 }
@@ -61,7 +63,8 @@ body {
 }
 
 .sidebar-bottom {
-    margin-top: 8px;         /* ikonlar yazıya yakın */
+    margin-top: 8px;
+    /* ikonlar yazıya yakın */
     padding-bottom: 0;
 }
 
@@ -152,6 +155,7 @@ body {
         opacity: 0;
         transform: translateX(-8px);
     }
+
     to {
         opacity: 1;
         transform: translateX(4px);
@@ -194,14 +198,15 @@ body {
 
 .main-content {
     max-width: 900px;
-    padding: 16px 0 40px;          /* üst boşluk küçük */
+    padding: 16px 0 40px;
+    /* üst boşluk küçük */
 }
 
 /* Section layout */
 
 .section {
     margin-bottom: 64px;
-    scroll-margin-top: 80px;    
+    scroll-margin-top: 80px;
 }
 
 .section-title {
@@ -227,7 +232,7 @@ body {
     max-width: 640px;
 }
 
-.section-body p + p {
+.section-body p+p {
     margin-top: 10px;
 }
 
@@ -259,7 +264,7 @@ body {
     color: var(--muted);
 }
 
-.about-edu li + li {
+.about-edu li+li {
     margin-top: 6px;
 }
 
@@ -420,7 +425,8 @@ body {
 
     .page-wrapper {
         max-width: 1200px;
-        flex-direction: row;   /* iki kolon */
+        flex-direction: row;
+        /* iki kolon */
         gap: 200px;
     }
 
@@ -433,7 +439,8 @@ body {
     }
 
     .sidebar-bottom {
-        margin-top: auto;     /* ikonları alta it */
+        margin-top: auto;
+        /* ikonları alta it */
         padding-bottom: 40px;
     }
 
@@ -490,19 +497,22 @@ body {
     cursor: pointer;
     z-index: 999;
     border-radius: 50%;
-    overflow: hidden;        
+    overflow: hidden;
     background: rgba(56, 189, 248, 0.08);
-    backdrop-filter: blur(4px);    /* Hafif cam etkisi */
+    backdrop-filter: blur(4px);
+    /* Hafif cam etkisi */
     box-shadow: 0 0 20px rgba(0, 242, 255, 0.28),
-                0 0 40px rgba(0, 242, 255, 0.18);
+        0 0 40px rgba(0, 242, 255, 0.18);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .astro-btn img {
     width: 100%;
     height: 100%;
-    object-fit: cover;             /* GIF’i kusursuz daireye oturtur */
-    border-radius: 50%;            /* Yumuşak köşe %100 */
+    object-fit: cover;
+    /* GIF’i kusursuz daireye oturtur */
+    border-radius: 50%;
+    /* Yumuşak köşe %100 */
 }
 
 
@@ -581,4 +591,3 @@ body {
     border-color: white;
     color: white;
 }
-

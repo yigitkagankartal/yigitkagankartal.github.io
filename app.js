@@ -104,46 +104,9 @@ const portal = document.getElementById("portal");
 const closeBtn = document.querySelector(".portal-close");
 
 astro.addEventListener("click", () => {
-    portal.classList.add("active");
+  portal.classList.add("active");
 });
 
 closeBtn.addEventListener("click", () => {
-    portal.classList.remove("active");
+  portal.classList.remove("active");
 });
-// ---------- CV DROPDOWN TOGGLE (CLICK ile Aç / Kapat) ----------
-
-const cvWrapper = document.querySelector(".cv-wrapper");
-const cvButton = document.querySelector(".cv-button");
-
-if (cvWrapper && cvButton) {
-  cvButton.addEventListener("click", (e) => {
-    e.stopPropagation(); // dışarıya tıklama event'i gitmesin
-
-    // Aç / kapa
-    const isOpen = cvWrapper.classList.contains("open");
-    if (isOpen) {
-      cvWrapper.classList.remove("open");
-    } else {
-      cvWrapper.classList.add("open");
-
-      // mini bounce animasyonu
-      cvButton.classList.remove("cv-bounce");
-      void cvButton.offsetWidth; // reflow
-      cvButton.classList.add("cv-bounce");
-    }
-  });
-
-  // Dropdown içindeyken kapanmasın diye, içerikteki tıklamayı da durdur
-  const cvDropdown = cvWrapper.querySelector(".cv-dropdown");
-  if (cvDropdown) {
-    cvDropdown.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-  }
-
-  // Sayfanın başka bir yerine tıklanınca kapat
-  window.addEventListener("click", () => {
-    cvWrapper.classList.remove("open");
-  });
-}
-
